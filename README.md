@@ -24,7 +24,7 @@ Open the audio guestbook sketch, ensure you have the correct Teensy options set,
 
 For most audio projects, leave Audio tweaks set to `Normal`, as the audio library isn't fully tested with 256-sample blocks.
 
-_DO NOT_ copy the `play_wav_sd.cpp` and `.h` files to your Audio library: They _should_ appear as extra tabs in your Arduino IDE, but are _only_ of use for this project and _will_ break other audio applications using SD playback!
+_DO NOT_ copy the `play_sd_wav.cpp` and `play_sd_wav.h` files to your Audio library: They _should_ appear as extra tabs in your Arduino IDE, but are _only_ of use for this project and _will_ break other audio applications using SD playback!
 
 ## Technical stuff
 ### Tweaks
