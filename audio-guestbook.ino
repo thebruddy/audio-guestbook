@@ -413,9 +413,15 @@ void playLastRecording() {
     snprintf(filename, 11, " %05d.wav", i);
     // check, if file with index i exists
     if (!SD.exists(filename)) {
-     idx = i - 1;
-     break;
+      if (i == 0) {
+        Serial.println("No recordings found");
+        return;
       }
+      if (i > 0) {
+        idx = i - 1;
+      }
+      break;
+    }
   }
       // now play file with index idx == last recorded file
       snprintf(filename, 11, " %05d.wav", idx);
