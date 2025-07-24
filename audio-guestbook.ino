@@ -201,7 +201,13 @@ void loop() {
           playLastRecording();
           return;
         }
-        
+
+      }
+      // If handset has been replaced while the greeting was playing, abort
+      buttonRecord.update();
+      if(buttonRecord.read()) {
+        mode = Mode::Ready; print_mode();
+        return;
       }
       // Debug message
       Serial.println("Starting Recording");
@@ -209,6 +215,12 @@ void loop() {
       waveform1.begin(beep_volume, 440, WAVEFORM_SINE);
       wait(1250);
       waveform1.amplitude(0);
+      // If the handset was replaced during the tone, don't start recording
+      buttonRecord.update();
+      if(buttonRecord.read()) {
+        mode = Mode::Ready; print_mode();
+        return;
+      }
       // Start the recording function
       startRecording();
       break;
